@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Отчёты сотрудников</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="tabs">
+    <button onclick="showTab('gos')">📥 Отчёт ГОС</button>
+    <button onclick="showTab('zakriv')">📥 Отчёт ЗАКРЫВ</button>
+    <button onclick="showTab('stat_gos')">📊 Статистика ГОС</button>
+    <button onclick="showTab('stat_zakriv')">📊 Статистика ЗАКРЫВ</button>
+  </div>
+
+  <div id="gos" class="tab-content">
+    <h2>Отчёт ГОС</h2>
+    <input placeholder="Сколько клиентов" id="gos_clients"/>
+    <input placeholder="Сколько передано на РФМ" id="gos_rfm"/>
+    <input placeholder="Сколько срезалось" id="gos_cut"/>
+    <input placeholder="Сколько недозвонов" id="gos_missed"/>
+    <textarea placeholder="Список недозвонов" id="gos_list"></textarea>
+    <button onclick="submitGos()">Отправить отчёт ГОС</button>
+  </div>
+
+  <div id="zakriv" class="tab-content" style="display:none;">
+    <h2>Отчёт ЗАКРЫВ</h2>
+    <input placeholder="Сколько принял от ГОСА" id="zak_gos"/>
+    <input placeholder="Сколько срезалось" id="zak_cut"/>
+    <input placeholder="Сколько закрыл" id="zak_done"/>
+    <input placeholder="Общая сумма у клиентов" id="zak_total"/>
+    <button onclick="submitZakriv()">Отправить отчёт ЗАКРЫВ</button>
+  </div>
+
+  <div id="stat_gos" class="tab-content" style="display:none;">
+    <h2>Статистика ГОС — будет позже</h2>
+  </div>
+
+  <div id="stat_zakriv" class="tab-content" style="display:none;">
+    <h2>Статистика ЗАКРЫВ — будет позже</h2>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
