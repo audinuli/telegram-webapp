@@ -6,6 +6,7 @@ function showTab(tabId) {
 }
 
 // Отправка отчета ГОС
+// Отправка отчета ГОС
 function submitGos() {
   const data = {
     type: 'gos',
@@ -13,12 +14,32 @@ function submitGos() {
     rfm: document.getElementById('gos_rfm').value,
     cut: document.getElementById('gos_cut').value,
     missed: document.getElementById('gos_missed').value,
-    list: document.getElementById('gos_list').value
+    list: document.getElementById('gos_list').value,
+    telegram_id: Telegram.WebApp.initDataUnsafe.user.id,
+    name: Telegram.WebApp.initDataUnsafe.user.first_name
   };
-  console.log('Отправлен отчет ГОС:', data);
-  alert('Отчет ГОС отправлен!');
+
+  fetch('https://telegram-webapp-mu.vercel.app/api/report', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => {
+      if (response.ok) {
+        alert('✅ Отчет ГОС успешно отправлен!');
+      } else {
+        alert('❌ Ошибка при отправке отчета');
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка:', error);
+      alert('❌ Ошибка соединения');
+    });
 }
 
+// Отправка отчета ЗАКРЫВ
 // Отправка отчета ЗАКРЫВ
 function submitZakriv() {
   const data = {
@@ -26,8 +47,27 @@ function submitZakriv() {
     from_gos: document.getElementById('zak_gos').value,
     cut: document.getElementById('zak_cut').value,
     done: document.getElementById('zak_done').value,
-    total: document.getElementById('zak_total').value
+    total: document.getElementById('zak_total').value,
+    telegram_id: Telegram.WebApp.initDataUnsafe.user.id,
+    name: Telegram.WebApp.initDataUnsafe.user.first_name
   };
-  console.log('Отправлен отчет ЗАКРЫВ:', data);
-  alert('Отчет ЗАКРЫВ отправлен!');
+
+  fetch('https://telegram-webapp-mu.vercel.app/api/report', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => {
+      if (response.ok) {
+        alert('✅ Отчет ЗАКРЫВ успешно отправлен!');
+      } else {
+        alert('❌ Ошибка при отправке отчета');
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка:', error);
+      alert('❌ Ошибка соединения');
+    });
 }
