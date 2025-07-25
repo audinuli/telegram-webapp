@@ -19,7 +19,8 @@ function submitGos() {
     name: Telegram.WebApp.initDataUnsafe.user.first_name
   };
 
-  fetch('https://telegram-webapp-mu.vercel.app/api/report', {
+  fetch('fetch('https://workspace.audinuli.id.repl.co/api/report', {
+', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -52,7 +53,8 @@ function submitZakriv() {
     name: Telegram.WebApp.initDataUnsafe.user.first_name
   };
 
-  fetch('https://telegram-webapp-mu.vercel.app/api/report', {
+  fetch('fetch('https://workspace.audinuli.id.repl.co/api/report', {
+', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
